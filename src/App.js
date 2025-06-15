@@ -5,6 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import DateRangeSelector from './DateRangeSelector';
 import GuestForm from './GuestForm';
+import AccountPage from './AccountPage';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/Date" element={<DateRangeSelector />}></Route>
           <Route path="/guestform" element={<GuestForm />} />
+          <Route path="/accountpage" element={<AccountPage />} />
           {/* <Route path="/mainpage" element={<MainPage />} />
           <Route path="/createpost" element={<CreatePost />} />
           <Route path="/blog" element={<Blog />} />

@@ -8,13 +8,11 @@ import {
   Checkbox,
   FormControlLabel,
   Divider,
+  Toolbar,
 } from "@mui/material";
-import { Google, Facebook } from "@mui/icons-material";
-import Title from "./Title";
 import axios from "axios"; 
 import { useNavigate } from "react-router-dom";
-import GoogleButton from "react-google-button";
-import { FaFacebook } from "react-icons/fa";
+
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -24,22 +22,24 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://localhost:8080/auth/login", formData, {
+        const response = await axios.post("http://16.171.143.231:8080/auth/login", formData, {
             headers: { "Content-Type": "application/json" },
         });
         if (response.data.id) {
 
-          // alert(response);
+          // alert(response.data.id);
           // alert("Login successful!");
           localStorage.setItem("userId", response.data.id);
           localStorage.setItem("AccountName", response.data.name);
           // alert(localStorage.getItem("AccountName"));
 
           // Redirect to MainPage
-          navigate("/mainpage");
+          navigate("/AccountPage");
       }
     } catch (error) {
         console.error("Login error:", error.response?.data || error.message);
@@ -48,22 +48,35 @@ const Login = () => {
 };
 
   return (
-    <Box>
-      <Title />
-    <Container maxWidth="xs">
-      <Box sx={{ flexShrink: 0, mr: 2 }}>
-            {/* <Title /> */}
+    <Box sx={{backgroundColor: "#fff8e1",minHeight: "100vh"}}>
+      {/* <Title /> */}
+      <Box sx={{backgroundColor: "#ffecb3"}}>
+        <Toolbar>
+          <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: 'bold',color: 'black' }}>
+            GuestFlow
+          </Typography>
+          </Toolbar>
           </Box>
-      <Box sx={{ mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
-        <Typography variant="h4"  sx={{
-                  fontWeight: "bold",
-                  fontFamily: '"Red Rose", cursive',
-                  fontWeight: 500,
-                  color: "black",
-                  // fontSize: "30px"
-                }}align="center" gutterBottom>
-                    Login
-                  </Typography>
+        {/* </AppBar> */}
+        <Box>
+        <Typography variant="h4" sx= {{mt: 4, p: 3,textAlign: "center",fontWeight: "bold", textTransform: "uppercase"}}>
+          Welcome! Log in here.
+        </Typography>
+      </Box>
+    <Container maxWidth="xs">
+      <Box sx={{ mt: 10, p: 3, boxShadow: 3, borderRadius: 5, bgcolor: "white" }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Typography
+      variant="h5" 
+      sx={{
+        fontWeight: "bold",
+        color: "black",
+      }}
+      gutterBottom
+    >
+      Login
+    </Typography>
+  </Box>
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
@@ -78,14 +91,13 @@ const Login = () => {
             required
             sx={{
               // Reduce width
-              borderRadius: "25px", 
-              fontFamily: '"Red Rose", cursive',// Curve effect (not directly applied to TextField)
+              borderRadius: "25px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "25px",
-                fontSize: "14px" // Apply rounded corners to the input field
+                fontSize: "13px" // Apply rounded corners to the input field
               },
               "& .MuiInputLabel-root": {
-                fontSize: "12px", // Adjust label font size
+                fontSize: "14px", // Adjust label font size
               },
             }}
           />
@@ -104,11 +116,10 @@ const Login = () => {
               borderRadius: "25px", // Curve effect (not directly applied to TextField)
               "& .MuiOutlinedInput-root": {
                 borderRadius: "25px",
-                fontFamily: '"Red Rose", cursive',
-                fontSize: "14px" // Apply rounded corners to the input field
+                fontSize: "13px" // Apply rounded corners to the input field
               },
               "& .MuiInputLabel-root": {
-                fontSize: "12px", // Adjust label font size
+                fontSize: "14px", // Adjust label font size
               },
             }}
           />
@@ -124,41 +135,21 @@ const Login = () => {
                           variant="contained"
                           color="primary"
                           type="submit"
-                          sx={{ mt: 2, bgcolor: "#ed2011",fontFamily: '"Red Rose", cursive', "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
+                          sx={{ mt: 2, bgcolor: "#0097a7",color: "black",fontWeight:"bold", "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none",backgroundColor: "#ffa000" }}>
                            Login
                         </Button>
                       </Box>
-          <Typography align="center" sx={{ mt: 2, textDecoration: "underline", cursor: "pointer", fontFamily: '"Red Rose", cursive',
-            fontWeight: 500,fontSize: "14px" }}>
+          <Typography align="center" sx={{ mt: 2, textDecoration: "underline", cursor: "pointer",
+            fontWeight: 600,fontSize: "13px" }}>
             Forgot your password?
           </Typography>
-          <Divider sx={{ my: 2, fontFamily: '"Red Rose", cursive' }}>or</Divider>
-          <GoogleButton fullWidth variant="outlined" onClick={() => console.log("Google Sign-In Clicked")} style={{width: "100%",borderRadius: "25px",fontFamily: '"Red Rose", cursive',textTransform: "none"}}/>
-           <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
-          <Button
-                  // onClick={onClick}
-                  fullWidth
-                  variant="outlined"
-                  startIcon={<FaFacebook size={24} color="#1877F2" />} // Facebook Blue Color
-                  sx={{
-                    borderRadius: "25px",
-                    textTransform: "none",
-                    fontFamily: '"Red Rose", cursive',
-                    fontSize: "16px",
-                    fontWeight: "500",
-                    color: "#1877F2", // Facebook theme color
-                    borderColor: "#1877F2",
-                    // "&:hover": { backgroundColor: "#1877F2", color: "white" },
-                  }}
-                >
-                  Sign in with Facebook
-                </Button>
-                </Box>
+          <Divider sx={{ my: 2 }}>or</Divider>
+          
           
         
-          <Typography align="center" sx={{ mt: 2,fontFamily: '"Red Rose", cursive',
-            fontWeight: 500,fontSize: "14px"  }}>
-            Don't have an account? <span style={{ color: "blue", cursor: "pointer"}}>Sign up</span>
+          <Typography align="center" sx={{ mt: 2,
+            fontWeight: 600,fontSize: "13px"  }}>
+            Don't have an account? <span style={{ color: "blue", cursor: "pointer"}} onClick={() => navigate("/")}>Sign up</span>
           </Typography>
         </form>
       </Box>

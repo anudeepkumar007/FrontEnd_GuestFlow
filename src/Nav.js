@@ -1,9 +1,8 @@
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
-
 function Nav() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSignupClick = () => {
     navigate('/signup');
@@ -11,23 +10,34 @@ function Nav() {
 
   const handleLoginClick = () => {
     navigate('/login');
-  }
-    return (
-        <AppBar position="static" color="primary">
+  };
+
+  return (
+    <Box sx={{ backgroundColor: "#ffecb3"}}>
+      {/* <AppBar position="static" sx={{ mt: 0, bgcolor: "white" }}> */}
         <Toolbar>
-          {/* Title on the left */}
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h4"
+            sx={{ flexGrow: 1, fontWeight: 'bold', color: 'black' }}
+          >
             GuestFlow
           </Typography>
           
-
-          {/* Navigation Buttons */}
-          <Button color="inherit" onClick={handleSignupClick}>Signup</Button>
-          <Button color="inherit" onClick={handleLoginClick}>Login</Button>
-          <Button color="inherit">About Us</Button>
+          {/* Right-aligned buttons inside Toolbar */}
+          <Button  color="primary"
+           type="submit" onClick={handleLoginClick} sx={{ mt: 0, bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
+                     "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
+            Login
+          </Button>
+          <Button  color="primary"
+               type="submit" sx={{ mt: 0, ml: 2, bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
+                           "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
+            About Us
+          </Button>
         </Toolbar>
-      </AppBar>
-    );
+      {/* </AppBar> */}
+    </Box>
+  );
 }
 
 export default Nav;

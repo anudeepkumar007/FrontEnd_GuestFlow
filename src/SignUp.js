@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Container, TextField, Button, Typography, Box, Divider } from "@mui/material";
-import Title from "./Title";
-import { Facebook, Google } from "@mui/icons-material";
-import GoogleIcon from "@mui/icons-material/Google";
+import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import axios from "axios"; 
-import GoogleButton from "react-google-button";
-import { FaFacebook } from "react-icons/fa";
-import { GrGoogle } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
+
 
 const Signup = () => {
     const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", password: "" });
@@ -18,7 +17,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8080/auth/signup", formData, {
+            const response = await axios.post("http://16.171.143.231:8080/auth/signup", formData, {
                 headers: { "Content-Type": "application/json" },
             });
             alert(response.data);
@@ -27,31 +26,29 @@ const Signup = () => {
             alert("Signup failed. Please try again.");
         }
     };
+    const navigate = useNavigate();
 
     return (
-        <Box>
-            <Title />
-        
+        <Box sx={{display: 'flex' }} >
             <Container maxWidth="xs">
-                <Box sx={{ mt: 5, p: 3, boxShadow: 3, borderRadius: 5 }}>
+                <Box sx={{ mt: 8, p: 3, boxShadow: 3, borderRadius: 5,backgroundColor: 'white' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Typography
                         variant="h5"
                         sx={{
-                            // fontWeight: "bold",
-                            fontFamily: '"Red Rose", cursive',
-                            fontWeight: 500,
-                            color: "black",
+                            fontWeight: "bold",
+                            color: "black"                            
                         }}
                         align="center"
                         gutterBottom>
                         Create an Account
                     </Typography>
+                    </Box>
                     <form onSubmit={handleSubmit}>
                         <TextField
                             fullWidth
                             label="First Name"
                             name="firstName"
-                            fontFamily= '"Red Rose", cursive'
                             variant="outlined"
                             margin="normal"
                             value={formData.firstName}
@@ -63,19 +60,18 @@ const Signup = () => {
                                 "& .MuiOutlinedInput-root": {
                                   borderRadius: "25px",
                                   fontSize: "14px", // Apply rounded corners to the input field
-                                  fontFamily: '"Red Rose", cursive',
+                                  
                                 },
                                 "& .MuiInputLabel-root": {
-                                  fontSize: "12px", // Adjust label font size
-                                  fontFamily: '"Red Rose", cursive'
+                                  fontSize: "14px", // Adjust label font size
+                                  
                                 },
                               }}
                         />
                         <TextField
                             fullWidth
                             label="Last Name"
-                            name="lastName"
-                            fontFamily= '"Red Rose", cursive'
+                            name="lastName"                      
                             variant="outlined"
                             margin="normal"
                             value={formData.lastName}
@@ -87,11 +83,11 @@ const Signup = () => {
                                 "& .MuiOutlinedInput-root": {
                                   borderRadius: "25px",
                                   fontSize: "14px", // Apply rounded corners to the input field
-                                  fontFamily: '"Red Rose", cursive'
+                                  
                                 },
                                 "& .MuiInputLabel-root": {
-                                  fontSize: "12px", // Adjust label font size
-                                  fontFamily: '"Red Rose", cursive'
+                                  fontSize: "14px", // Adjust label font size
+                                  
                                 },
                               }}
                         />
@@ -111,11 +107,11 @@ const Signup = () => {
                                 "& .MuiOutlinedInput-root": {
                                   borderRadius: "25px",
                                   fontSize: "14px", // Apply rounded corners to the input field
-                                  fontFamily: '"Red Rose", cursive'
+                                  
                                 },
                                 "& .MuiInputLabel-root": {
-                                  fontSize: "12px", // Adjust label font size
-                                  fontFamily: '"Red Rose", cursive'
+                                  fontSize: "14px", // Adjust label font size
+                                  
                                 },
                               }}
                         />
@@ -124,7 +120,6 @@ const Signup = () => {
                             label="Password"
                             name="password"
                             type="password"
-                            fontFamily= '"Red Rose", cursive'
                             variant="outlined"
                             margin="normal"
                             value={formData.password}
@@ -137,8 +132,8 @@ const Signup = () => {
                                   borderRadius: "25px", // Apply rounded corners to the input field
                                 },
                                 "& .MuiInputLabel-root": {
-                                  fontSize: "12px", // Adjust label font size
-                                  fontFamily: '"Red Rose", cursive'
+                                  fontSize: "14px", // Adjust label font size
+                                  
                                 },
                               }}
                         />
@@ -147,46 +142,30 @@ const Signup = () => {
                                 variant="contained"
                                 color="primary"
                                 type="submit"
-                                sx={{ mt: 2, bgcolor: "#ed2011",fontFamily: '"Red Rose", cursive', "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
-                                Create Account
+                                sx={{ mt: 2, bgcolor: "#ffa000",color:"black",fontWeight:"bold", "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
+                                Sign Up
                             </Button>
                         </Box>
-                        <Divider sx={{ my: 2, fontFamily: '"Red Rose", cursive' }}>or</Divider>
+                        <Divider sx={{ my: 2 }}>or</Divider>
                         <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
-                    
-                    <GoogleButton fullWidth variant="outlined" onClick={() => console.log("Google Sign-In Clicked")} style={{width: "100%",borderRadius: "25px", fontFamily: '"Red Rose", cursive',textTransform: "none"}}/>
+                    <FacebookTwoToneIcon/>
+                    <LinkedInIcon sx={{ ml: 2 }}/>
+                    <InstagramIcon sx={{ ml: 2 }}/>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
-                <Button
-        // onClick={onClick}
-        fullWidth
-        variant="outlined"
-        startIcon={<FaFacebook size={24} color="#1877F2" />} // Facebook Blue Color
-        sx={{
-          borderRadius: "25px",
-          textTransform: "none",
-          fontSize: "16px",
-          fontWeight: "500",
-          fontFamily: '"Red Rose", cursive',
-          color: "#1877F2", // Facebook theme color
-          borderColor: "#1877F2",
-        //   "&:hover": { backgroundColor: "#1877F2", color: "white" },
-        }}
-      >
-        Sign in with Facebook
-      </Button>
+                <Typography align="center" sx={{ mt: 2,
+                  fontWeight: 600,fontSize: "13px" }}>
+                   Already have an Account?{" "}
+                    <span
+          style={{ color: "blue", cursor: "pointer" }}
+          onClick={() => navigate("/login")}
+        >
+          Login
+        </span>
+                </Typography>
                 </Box>
                     </form>
                 </Box>
-            </Container>
-
-            {/* Social Login Buttons */}
-            <Container maxWidth="xs">
-                <Typography align="center" sx={{ mt: 2,fontFamily: '"Red Rose", cursive',
-                  fontWeight: 500,fontSize: "14px" }}>
-                    Already have an account?{" "}
-                    <span style={{ color: "blue", cursor: "pointer" }}>Sign in</span>
-                </Typography>
             </Container>
         </Box>
     );

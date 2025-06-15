@@ -4,10 +4,9 @@ import React from "react";
 const Title = () => {
     return (
         
-        <Typography variant="h4"
-        sx={{
+        <Typography variant="h5"
+        sx={{ mt: 2, ml: 2 ,
           fontWeight: "bold",
-          fontFamily: "'Wendy One', sans-serif",
           color: "black",
         }}>
             GuestFlow
