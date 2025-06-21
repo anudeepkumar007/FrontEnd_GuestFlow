@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
 function Nav() {
@@ -24,6 +24,11 @@ function Nav() {
           </Typography>
           
           {/* Right-aligned buttons inside Toolbar */}
+          <Button  color="primary"
+           type="submit" onClick={handleSignupClick} sx={{ bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
+                     "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
+            Account +
+          </Button>
           <Button  color="primary"
            type="submit" onClick={handleLoginClick} sx={{ bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
                      "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>

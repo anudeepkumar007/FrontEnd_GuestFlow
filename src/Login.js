@@ -27,7 +27,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://16.171.143.231:8080/auth/login", formData, {
+        const response = await axios.post("http://51.20.56.241:8080/auth/login", formData, {
             headers: { "Content-Type": "application/json" },
         });
         if (response.data.id) {
@@ -59,7 +59,7 @@ const Login = () => {
           </Box>
         {/* </AppBar> */}
         <Box>
-        <Typography variant="h4" sx= {{mt: 4, p: 3,textAlign: "center",fontWeight: "bold", textTransform: "uppercase"}}>
+        <Typography variant="h4" sx= {{mt: 4, p: 3,textAlign: "center",fontWeight: "bold", textTransform: "None"}}>
           Welcome! Log in here.
         </Typography>
       </Box>
@@ -149,7 +149,7 @@ const Login = () => {
         
           <Typography align="center" sx={{ mt: 2,
             fontWeight: 600,fontSize: "13px"  }}>
-            Don't have an account? <span style={{ color: "blue", cursor: "pointer"}} onClick={() => navigate("/")}>Sign up</span>
+            Don't have an account? <span style={{ color: "blue", cursor: "pointer"}} onClick={() => navigate("/SignUp")}>Sign up</span>
           </Typography>
         </form>
       </Box>

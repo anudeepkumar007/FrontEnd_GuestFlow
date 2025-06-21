@@ -44,7 +44,7 @@ export default function AccountPage() {
   useEffect(() => {
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(`http://16.171.143.231:8080/guests/${userId}/events`);
+      const response = await axios.get(`http://51.20.56.241:8080/guests/${userId}/events`);
       setEvents(response.data);
     } catch (error) {
       console.error("Failed to fetch events:", error);
@@ -61,7 +61,7 @@ const handleEventSelect = async (event) => {
   setSelectedEvent(selected);
 
   try {
-    const response = await axios.get(`http://16.171.143.231:8080/guests/${userId}/event/${encodeURIComponent(selected)}`);
+    const response = await axios.get(`http://51.20.56.241:8080/guests/${userId}/event/${encodeURIComponent(selected)}`);
     setGuests(response.data);
   } catch (error) {
     console.error("Failed to fetch guests by event:", error);
