@@ -53,37 +53,16 @@ const Signup = () => {
           </Typography>
         </Toolbar>
       </Box>
-
       {/* Heading */}
-      <Typography
-        variant={isMobile ? "h5" : "h4"}
-        sx={{ mt: 4, px: 2, textAlign: "center", fontWeight: "bold" }}
-      >
-        Join the GuestFlow Family!
-      </Typography>
-
+      <Box>
+        <Typography variant="h4" sx= {{mt: 4, p: 3,textAlign: "center",fontWeight: "bold", textTransform: "None"}}>
+          Join the GuestFlow Family!
+        </Typography>
+      </Box>
       {/* Signup Form Container */}
-      <Container
-  maxWidth={false}
-  sx={{
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    backgroundColor: '#fff8e1',
-    py: 4,
-    mt: -6,
-  }}
->
-  <Box
-    sx={{
-      width: 'clamp(300px, 80%, 350px)', // fluid width
-      p: { xs: 2, sm: 3, md: 4 },
-      backgroundColor: 'white',
-      borderRadius: 4,
-      boxShadow: 3,
-    }}
-  >
+      <Container maxWidth="xs">
+  <Box sx={{ mt: 6, p: 3, boxShadow: 3, borderRadius: 5, bgcolor: "white" }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
     <Typography
       variant="h5"
       align="center"
@@ -96,6 +75,7 @@ const Signup = () => {
     >
       Create an Account
     </Typography>
+    </Box>
 
     <form onSubmit={handleSubmit}>
       {["firstName", "lastName", "email", "password"].map((field, index) => (
@@ -170,7 +150,6 @@ const Signup = () => {
     </form>
   </Box>
 </Container>
-
     </Box>
   );
 };

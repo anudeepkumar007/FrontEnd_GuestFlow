@@ -34,11 +34,6 @@ function Nav() {
                      "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
             Login
           </Button>
-          <Button  color="primary"
-               type="submit" sx={{ bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
-                           "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
-            About Us
-          </Button>
         </Toolbar>
       {/* </AppBar> */}
     </Box>

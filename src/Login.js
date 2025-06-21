@@ -64,7 +64,7 @@ const Login = () => {
         </Typography>
       </Box>
     <Container maxWidth="xs">
-      <Box sx={{ mt: 10, p: 3, boxShadow: 3, borderRadius: 5, bgcolor: "white" }}>
+      <Box sx={{ mt: 6, p: 3, boxShadow: 3, borderRadius: 5, bgcolor: "white" }}>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
     <Typography
       variant="h5" 
