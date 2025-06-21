@@ -25,12 +25,12 @@ function Nav() {
           
           {/* Right-aligned buttons inside Toolbar */}
           <Button  color="primary"
-           type="submit" onClick={handleLoginClick} sx={{ mt: 0, bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
+           type="submit" onClick={handleLoginClick} sx={{ bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
                      "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
             Login
           </Button>
           <Button  color="primary"
-               type="submit" sx={{ mt: 0, ml: 2, bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
+               type="submit" sx={{ bgcolor: "#ffecb3",fontWeight: "bold",color: "black",
                            "&:hover": { bgcolor: "" },borderRadius: "20px",textTransform: "none" }}>
             About Us
           </Button>
