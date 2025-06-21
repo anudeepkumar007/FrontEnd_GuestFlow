@@ -52,7 +52,7 @@ function GuestPage() {
     };
 
     try {
-      const response = await fetch('http://51.20.56.241:8080/guests/add', {
+      const response = await fetch('http://56.228.31.113:8080/guests/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
